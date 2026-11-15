@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yaadein - Lyric Video</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--blood:#e3171b;--neon:#ff4a3d;--ember:#ff9a6b;--ink:#070101;--bone:#fff3ea}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'Cormorant Garamond',Georgia,serif;color:var(--bone)}
+body{display:flex;align-items:center;justify-content:center}
+
+.stage{position:relative;overflow:hidden;background:var(--ink);container-type:inline-size;
+  width:min(100vw,calc(100dvh*9/16));aspect-ratio:9/16;--fs:8.2cqw}
+.stage.wide{width:min(100vw,calc(100dvh*16/9));aspect-ratio:16/9;--fs:4.6cqw}
+
+.bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(227,23,27,.55),rgba(120,5,8,.35) 55%,transparent 80%),
+  linear-gradient(#1a0203,#050000)}
+.grid{position:absolute;inset:-5%;
+  background-image:linear-gradient(rgba(0,0,0,.85) 3px,transparent 3px),linear-gradient(90deg,rgba(0,0,0,.85) 3px,transparent 3px);
+  background-size:15cqw 15cqw;mix-blend-mode:multiply;opacity:.9;animation:drift 40s linear infinite}
+.stage.wide .grid{background-size:9cqw 9cqw}
+@keyframes drift{to{transform:translate(15cqw,15cqw)}}
+
+.tubes{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:screen;filter:drop-shadow(0 0 6px #ff3b2f) drop-shadow(0 0 18px #e3171b)}
+.tubes path{fill:none;stroke:var(--neon);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:420 900;animation:run 9s linear infinite}
+.tubes path:nth-child(2){stroke:var(--ember);stroke-width:1.4;animation-duration:13s;animation-direction:reverse}
+.tubes path:nth-child(3){stroke-width:1.8;animation-duration:11s;animation-delay:-4s}
+@keyframes run{to{stroke-dashoffset:-1320}}
+
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.88) 100%)}
+.pulse{position:absolute;inset:0;background:var(--blood);mix-blend-mode:overlay;opacity:0;animation:flick 5s infinite steps(1)}
+@keyframes flick{0%{opacity:0}7%{opacity:.18}8%{opacity:0}41%{opacity:.1}42%{opacity:0}43%{opacity:.22}44%{opacity:0}100%{opacity:0}}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+.grain{position:absolute;inset:-20%;opacity:.28;mix-blend-mode:overlay;animation:grain .6s steps(6) infinite;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+.lyrics{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 9cqw;text-align:center}
+.line{position:absolute;left:9cqw;right:9cqw;font-family:'Italiana','Cormorant Garamond',Georgia,serif;
+  font-size:var(--fs);line-height:1.22;letter-spacing:.03em;text-transform:uppercase;color:var(--bone);
+  text-shadow:0 0 .5cqw rgba(255,90,70,.9),0 0 3cqw rgba(227,23,27,.9),0 0 7cqw rgba(227,23,27,.6)}
+.line span{display:inline-block;opacity:0;animation:in 1s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes in{from{opacity:0;filter:blur(12px);transform:translateY(2.2cqw) scale(1.04);letter-spacing:.18em}to{opacity:1;filter:blur(0);transform:none;letter-spacing:.03em}}
+.line.out{animation:out .7s ease-in forwards}
+@keyframes out{to{opacity:0;filter:blur(10px);transform:translateY(-2cqw)}}
+.line.title{font-size:calc(var(--fs)*1.6);letter-spacing:.14em}
+
+.ui{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2cqw;
+  background:rgba(5,0,0,.82);padding:8cqw;text-align:center;font-family:system-ui,sans-serif}
+.ui.hidden{display:none}
+.ui h1{font-family:'Italiana',serif;font-weight:400;font-size:9cqw;letter-spacing:.12em;text-shadow:0 0 4cqw var(--blood)}
+.ui p{font-size:3.6cqw;color:#e8c9c0;max-width:80cqw;line-height:1.45}
+.stage.wide .ui h1{font-size:5cqw}.stage.wide .ui p{font-size:2cqw}
+.btn{appearance:none;border:1px solid var(--neon);background:rgba(227,23,27,.18);color:var(--bone);
+  font:600 4cqw system-ui,sans-serif;padding:3.2cqw 8cqw;border-radius:100px;min-width:60cqw;box-shadow:0 0 3cqw rgba(227,23,27,.5)}
+.stage.wide .btn{font-size:2.2cqw;padding:1.4cqw 5cqw;min-width:30cqw}
+.btn:active{background:var(--blood)}
+.btn.ghost{background:transparent;box-shadow:none;border-color:#7a2a26;color:#d9a8a0}
+.row{display:flex;gap:2.5cqw;flex-wrap:wrap;justify-content:center}
+
+.sync{position:absolute;inset:0;z-index:15;display:none;flex-direction:column;font-family:system-ui,sans-serif;background:#0a0202}
+.sync.on{display:flex}
+.sync .next{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6cqw;text-align:center;gap:2cqw}
+.sync .count{font-size:3.4cqw;color:#c99}
+.sync .prev{font-size:3.8cqw;color:#7b4a47}
+.sync .cur{font-size:6.6cqw;color:var(--bone);line-height:1.3;font-weight:600}
+.sync .nxt{font-size:3.8cqw;color:#a86a64}
+.tap{height:42%;margin:0 4cqw 3cqw;border-radius:6cqw;border:2px solid var(--neon);background:radial-gradient(circle,rgba(227,23,27,.55),rgba(120,5,8,.4));
+  color:var(--bone);font:700 9cqw system-ui;box-shadow:0 0 6cqw rgba(227,23,27,.7);appearance:none}
+.tap:active{background:var(--blood)}
+.syncbar{display:flex;gap:2cqw;justify-content:space-between;padding:0 4cqw 4cqw}
+.syncbar .btn{min-width:0;flex:1;font-size:3.4cqw;padding:3cqw 1cqw}
+.out-box{width:100%;height:30cqw;background:#150404;color:#f6cfc6;border:1px solid #7a2a26;border-radius:2cqw;font:2.8cqw monospace;padding:2cqw}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="bg"></div>
+  <div class="grid"></div>
+  <svg class="tubes" viewBox="0 0 900 1600" preserveAspectRatio="xMidYMid slice">
+    <path d="M-40 1100 C 200 900, 260 1300, 450 1050 S 760 700, 940 900"/>
+    <path d="M-40 500 C 180 700, 300 300, 480 520 S 760 900, 940 600"/>
+    <path d="M450 -40 C 380 300, 560 420, 440 760 S 380 1200, 470 1640"/>
+  </svg>
+  <div class="pulse"></div>
+  <div class="vig"></div>
+  <div class="lyrics" id="lyrics"></div>
+  <div class="scan"></div>
+  <div class="grain"></div>
+
+  <div class="sync" id="sync">
+    <div class="next">
+      <div class="count" id="sCount"></div>
+      <div class="prev" id="sPrev"></div>
+      <div class="cur" id="sCur"></div>
+      <div class="nxt" id="sNext"></div>
+    </div>
+    <button class="tap" id="tap">TAP</button>
+    <div class="syncbar">
+      <button class="btn ghost" id="undo">Undo</button>
+      <button class="btn ghost" id="sExit">Exit</button>
+    </div>
+  </div>
+
+  <div class="ui" id="menu">
+    <h1>YAADEIN</h1>
+    <p id="status">Loading audio…</p>
+    <div class="row">
+      <button class="btn" id="bPlay">Play video</button>
+      <button class="btn" id="bSync">Sync lyrics</button>
+    </div>
+    <div class="row">
+      <button class="btn ghost" id="bFmt">Format: 9:16 vertical</button>
+    </div>
+  </div>
+
+  <div class="ui hidden" id="result">
+    <h1>Timings ready</h1>
+    <p>Copy karo, GitHub repo mein <b>timings.json</b> naam ki file banake paste karo.</p>
+    <textarea class="out-box" id="outBox" readonly></textarea>
+    <div class="row">
+      <button class="btn" id="bCopy">Copy</button>
+      <button class="btn ghost" id="bBack">Back</button>
+    </div>
+  </div>
+</div>
+
+<audio id="audio" src="Yaadein.m4a" preload="auto" playsinline></audio>
+
+<script>
+const RAW = `Kuch baatein adhoori hain, kuch raatein gawaah hain;
+jo keh na sake kabhi, wo lafzon mein panaah hain.
+Yaadein teri aaj bhi kam nahi hotin;
+raat dhal jaye par subah nahi hoti.
+Chehre pe hansi hai, andar khamoshi, andar khamoshi.
+Ab kisi se hai andar khamoshi,
+ab kisi se pehle jaisi baat nahi hoti.
+Yaadein... dil mein dabi hain saari farmaishein,
+yaadein... yaadein... khud se hi karta hoon ab saari guzaarish.
+Khaak mein khwaab ka nishaan abhi baaki;
+jebon mein khamoshi, aankhon mein raatein.
+Waqt ne sikhaya kaise chehre badalte hain;
+apne hi log kabhi anjaan se lagte.
+Main bhi tha masoom, mujhe ilm nahi tha;
+har muskaan ke peeche sach nahi tha.
+Jinpe tha yaqeen, wo hi door chale gaye;
+kuch sawaal dil mein adhoore reh gaye.
+Na koi shikwa, na koi gila hai;
+jo bhi mila mujhe, waqt ka sila hai.
+Main apni hi dhun mein safar kar raha;
+jo kal mera tha, aaj wo kahan hai?
+Yaadein teri aaj bhi kam nahi hotin;
+raat dhal jaye par subah nahi hoti.
+Chehre pe hansi hai, andar khamoshi...
+Ab kisi se hai andar khamoshi,
+ab kisi se pehle jaisi baat nahi hoti.
+Bedoor tha tera ya mera bharam tha;
+jo bhi tha dar, miyan, kuch toh alag tha.
+Lafzon mein kehna kabhi aasaan aata;
+dil mein jo tha, wo bayaan na hua.
+Shehar wahi hai, magar log naye hain;
+kisse wahi hain, magar rang naye hain.
+Main waqt ke pannon pe likhta raha;
+jo khud se chhupaya, wo kehta raha.
+Ab na kisi se koi umeed rakhta,
+na har kisi ko apna naseeb likhta.
+Main gira nahi, bas sambhalna seekha;
+har ek dard ko ghazal mein likha.
+Kuch yaadein mitai nahi jaatin,
+kuch baatein batai nahi jaatin;
+aur kuch log bas kahani ban jaate hain.`;
+
+const TITLE = 'Yaadein';
+const LINES = RAW.split('\n').map(s => s.trim().replace(/[;,.]+$/,'').trim()).filter(Boolean);
+const $ = id => document.getElementById(id);
+const audio = $('audio'), stage = $('stage'), lyr = $('lyrics');
+let times = null, cur = null, lastIdx = -2, running = false;
+
+async function loadTimings(){
+  try{
+    const r = await fetch('timings.json', {cache:'no-store'});
+    if(r.ok){ const j = await r.json(); if(Array.isArray(j) && j.length === LINES.length){ times = j; return 'timings.json'; } }
+  }catch(e){}
+  try{
+    const s = JSON.parse(localStorage.getItem('yaadein_times')||'null');
+    if(Array.isArray(s) && s.length === LINES.length){ times = s; return 'saved on this phone'; }
+  }catch(e){}
+  return null;
+}
+function autoTimes(){
+  const d = audio.duration || 180, start = 6, end = d - 8;
+  return LINES.map((_,i) => start + (end-start)*i/LINES.length);
+}
+async function init(){
+  const src = await loadTimings();
+  const ready = () => {
+    $('status').textContent = src
+      ? 'Timings loaded (' + src + '). Play karo ya dobara sync karo.'
+      : 'Timings nahi mile. Play karoge toh lines barabar baant di jayengi; sahi timing ke liye "Sync lyrics" karo.';
+  };
+  if(audio.readyState >= 1) ready(); else audio.addEventListener('loadedmetadata', ready, {once:true});
+  audio.addEventListener('error', () => { $('status').textContent = 'Audio nahi mila. Yaadein.m4a ko index.html ke saath same folder mein upload karo.'; });
+}
+
+function show(text, cls){
+  if(cur){ const o = cur; o.classList.add('out'); setTimeout(()=>o.remove(), 750); }
+  const d = document.createElement('div'); d.className = 'line' + (cls ? ' '+cls : '');
+  text.split(' ').forEach((w,i)=>{ const s = document.createElement('span'); s.textContent = w + '\u00a0'; s.style.animationDelay = (i*90)+'ms'; d.appendChild(s); });
+  lyr.appendChild(d); cur = d;
+}
+function clearLine(){ if(cur){ const o=cur; o.classList.add('out'); setTimeout(()=>o.remove(),750); cur=null; } }
+
+function tick(){
+  if(!running) return;
+  const t = audio.currentTime, T = times;
+  let idx = -1;
+  for(let i=0;i<T.length;i++){ if(T[i] <= t) idx = i; else break; }
+  if(idx !== lastIdx){
+    lastIdx = idx;
+    if(idx < 0) show(TITLE, 'title'); else show(LINES[idx]);
+  }
+  requestAnimationFrame(tick);
+}
+
+$('bPlay').onclick = async () => {
+  if(!times) times = autoTimes();
+  $('menu').classList.add('hidden');
+  audio.currentTime = 0; lastIdx = -2; clearLine();
+  try{ await audio.play(); }catch(e){ $('menu').classList.remove('hidden'); $('status').textContent='Audio play nahi hui. Dobara tap karo.'; return; }
+  running = true; tick();
+};
+audio.addEventListener('ended', () => {
+  running = false; clearLine();
+  setTimeout(()=>{ show('Yaadein', 'title'); }, 400);
+  setTimeout(()=>{ clearLine(); $('menu').classList.remove('hidden'); }, 5000);
+});
+
+$('bFmt').onclick = () => {
+  const w = stage.classList.toggle('wide');
+  $('bFmt').textContent = 'Format: ' + (w ? '16:9 horizontal' : '9:16 vertical');
+};
+
+let sIdx = 0, rec = [];
+function sRender(){
+  $('sCount').textContent = 'Line ' + Math.min(sIdx+1, LINES.length) + ' / ' + LINES.length;
+  $('sPrev').textContent = LINES[sIdx-1] || '';
+  $('sCur').textContent  = sIdx < LINES.length ? LINES[sIdx] : 'Done';
+  $('sNext').textContent = LINES[sIdx+1] || '';
+  $('tap').textContent = sIdx === 0 ? 'TAP when line 1 starts' : 'TAP';
+}
+$('bSync').onclick = async () => {
+  $('menu').classList.add('hidden'); $('sync').classList.add('on');
+  sIdx = 0; rec = []; sRender();
+  audio.currentTime = 0;
+  try{ await audio.play(); }catch(e){}
+};
+$('tap').onclick = () => {
+  if(sIdx >= LINES.length) return;
+  rec[sIdx] = +audio.currentTime.toFixed(2); sIdx++; sRender();
+  if(sIdx >= LINES.length) finishSync();
+};
+$('undo').onclick = () => { if(sIdx>0){ sIdx--; rec.pop(); sRender(); } };
+$('sExit').onclick = () => { audio.pause(); $('sync').classList.remove('on'); $('menu').classList.remove('hidden'); };
+function finishSync(){
+  audio.pause();
+  times = rec.slice();
+  try{ localStorage.setItem('yaadein_times', JSON.stringify(times)); }catch(e){}
+  $('outBox').value = JSON.stringify(times);
+  $('sync').classList.remove('on'); $('result').classList.remove('hidden');
+}
+$('bCopy').onclick = async () => {
+  try{ await navigator.clipboard.writeText($('outBox').value); $('bCopy').textContent='Copied'; }
+  catch(e){ $('outBox').select(); $('bCopy').textContent='Select + copy manually'; }
+};
+$('bBack').onclick = () => { $('result').classList.add('hidden'); $('menu').classList.remove('hidden'); $('status').textContent = 'Timings saved on this phone. Play karke dekho.'; };
+
+stage.addEventListener('dblclick', () => { if(running){ audio.pause(); running=false; $('menu').classList.remove('hidden'); } });
+
+init();
+</script>
+</body>
+  </html>
